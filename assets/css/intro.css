@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'mindthecaps';
+    src: url(../fonts/mind_the_caps/MindTheCaps-DEMOVERSION.ttf);
+  }
+  @font-face {
+    font-family: 'conthrax';
+    src: url(../fonts/conthrax/conthrax-sb.ttf);
+  }
+  @font-face {
+    font-family: 'Roboto-Regular';
+    src: url(../fonts/Roboto/Roboto-Regular.ttf);
+  }
+
+a{
+    text-decoration: none;
+}
+/* Kleine Endgeräte (Smartphones, kleiner als 768px) */
+@media (max-width: 575px) {
+    body{
+        background: url(../img/zeus-bg.png) no-repeat top/cover;
+    }
+    header{
+        height: 100vh;
+    }
+    .intro{
+        position: absolute;
+        top: 330px;
+        left: 0; 
+        right: 0; 
+        margin: 0 auto;
+    }
+    h1{
+        font-family: 'conthrax';
+        font-size: 2.5rem;
+        color: azure;
+        text-align: center;
+        text-shadow: 0px 0px 8px deepskyblue;
+    }
+    p{
+        margin: 0;
+    }
+    .untertitel{
+        font-family: 'Roboto-Regular';
+        font-size: 1.1rem;
+        text-align: center;
+        color: azure;
+        margin-top: -1.5rem;
+        margin-bottom: 2rem;
+        text-shadow: 0px 0px 2px deepskyblue;
+    }
+    .liste{
+        font-family: 'Roboto-Regular';
+        font-size: 0.9rem;
+        text-align: center;
+        color: azure;
+        padding: 0;
+    }
+    footer{
+        position: absolute;
+        bottom:0px;
+        font-family: 'Roboto-Regular';
+        font-size: 0.8rem;
+        color: rgb(11, 11, 119)
+        ;
+    }
+ 
+}
