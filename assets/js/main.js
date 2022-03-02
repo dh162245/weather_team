@@ -26,3 +26,13 @@ function currentTime() {
     clock.innerHTML = time;
 }
 currentTime()
+
+//lalal Test
+
+
+fetch('/assets/js/weather.json')
+    .then(response => response.json())
+    .then(json => console.log(json))
+
+    // http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}
+
