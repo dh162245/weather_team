@@ -28,7 +28,7 @@ function currentTime() {
 currentTime()
 
 
-fetch('/assets/js/weather.json')
+fetch('http://127.0.0.1:5500/weather_team/assets/js/weather.json')
     .then(response => response.json())
     .then(json => console.log(json))
 
