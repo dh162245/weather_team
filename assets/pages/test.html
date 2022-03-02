@@ -10,6 +10,10 @@ cg<!DOCTYPE html>
 </head>
 
 <body>
+
+    <div id="clock"></div>
+
+
     <section class="auswahl">
         <form onsubmit="return false">
             <label for="deineStadt">Deine Stadt:</label>
@@ -25,6 +29,8 @@ cg<!DOCTYPE html>
                 <option value="BG">Bulgarian</option>
                 <option value="CA">Catalan</option>
                 <option value="KM">Cambodian</option>
+                <option value="zh_tw">Chinese (Traditional)</option>
+                <option value="zh_cn">Chinese (Simplified)</option>
                 <option value="ZH">Chinese (Mandarin)</option>
                 <option value="HR">Croatian</option>
                 <option value="CS">Czech</option>
@@ -93,7 +99,7 @@ cg<!DOCTYPE html>
         </form>
     </section>
     <main>
-        <select>
+        <section>
             <article class="anfang">
                 <h1 class="stadt">München</h1>
                 <p class="temperatur">7°</p>
@@ -104,11 +110,11 @@ cg<!DOCTYPE html>
             <article class="tageswetter">
                 <p class="vorhersage">Sonne den ganzen Tag</p>
             </article>
-        </select>
+        </section>
     </main>
 
 
-    <script src="assets/js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>
