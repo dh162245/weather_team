@@ -27,8 +27,6 @@ function currentTime() {
 }
 currentTime()
 
-//lalal Test
-
 
 fetch('/assets/js/weather.json')
     .then(response => response.json())

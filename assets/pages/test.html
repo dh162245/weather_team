@@ -100,6 +100,7 @@ cg<!DOCTYPE html>
     </section>
     <main>
         <section>
+            <!-- Luftqualität BEGINN -->
             <article id="anfang">
                 <h1 id="stadt">München</h1>
                 <p id="temperatur">7°</p>
@@ -107,8 +108,96 @@ cg<!DOCTYPE html>
                 <p id="hochtief">H: 7° T: -3°</p>
 
             </article>
+
+            <!-- Stundengenaue Vorhersage für Heute BEGINN -->
             <article id="tageswetter">
-                <p id="vorhersage">Sonne den ganzen Tag</p>
+                <h2 id="vorhersage">Sonne den ganzen Tag</h2>
+                <div id="jetzt00" class="jetzt">8°</div>
+                <div id="jetzt01" class="jetzt">9°</div>
+                <div id="jetzt02" class="jetzt">9°</div>
+                <div id="jetzt03" class="jetzt">9°</div>
+                <div id="jetzt04" class="jetzt">8°</div>
+                <div id="jetzt05" class="jetzt">7°</div>
+                <div id="jetzt06" class="jetzt">7°</div>
+                <div id="jetzt07" class="jetzt">7°</div>
+                <div id="jetzt08" class="jetzt">6°</div>
+                <div id="jetzt09" class="jetzt">6°</div>
+                <div id="jetzt10" class="jetzt">5°</div>
+                <div id="jetzt11" class="jetzt">4°</div>
+                <div id="jetzt12" class="jetzt">4°</div>
+                <div id="jetzt13" class="jetzt">4°</div>
+                <div id="jetzt14" class="jetzt">2°</div>
+                <div id="jetzt15" class="jetzt">3°</div>
+                <div id="jetzt16" class="jetzt">4°</div>
+                <div id="jetzt17" class="jetzt">5°</div>
+                <div id="jetzt18" class="jetzt">6°</div>
+                <div id="jetzt19" class="jetzt">7°</div>
+                <div id="jetzt20" class="jetzt">8°</div>
+                <div id="jetzt21" class="jetzt">9°</div>
+                <div id="jetzt22" class="jetzt">9°</div>
+                <div id="jetzt23" class="jetzt">9°</div>
+            </article>
+
+            <!-- 10-Tage-Vorhersage BEGINN -->
+            <article id="10tage">
+                <h2>10-Tage-Vorhersage</h2>
+                <div id="tag00" class="tag">Heute ☀️ 12° 1°</div>
+                <div id="tag01" class="tag">Heute+1 🌤 12° 1°</div>
+                <div id="tag02" class="tag">Heute+2 🌤 12° 1°</div>
+                <div id="tag03" class="tag">Heute+3 ☀️ 12° 1°</div>
+                <div id="tag04" class="tag">Heute+4 🌦 12° 1°</div>
+                <div id="tag05" class="tag">Heute+5 ☁️ 12° 1°</div>
+                <div id="tag06" class="tag">Heute+6 ☀️ 12° 1°</div>
+                <div id="tag07" class="tag">Heute+7 🌤 12° 1°</div>
+                <div id="tag08" class="tag">Heute+8 ☀️ 12° 1°</div>
+                <div id="tag09" class="tag">Heute+9 ⛅️ 12° 1°</div>
+            </article>
+
+            <!-- Details BEGINN -->
+            <article class="details">
+                <h2>Details</h2>
+                <div>Gefühlt:</div>
+                <div id="gefuehlt">11°</div>
+
+                <div>Luftfeuchtigkeit:</div>
+                <div id="luftfeuchtigkeit">28%</div>
+
+                <div>Sichtweite:</div>
+                <div id="sichtweite">16km</div>
+
+                <div>UV Index:</div>
+                <div id="uvIndex">Tief 2</div>
+            </article>
+
+            <!-- Luftqualität BEGINN -->
+            <article class="luft">
+                <h2>Luftqualität:</h2>
+                <div id="luftQ"></div>
+            </article>
+
+            <!-- Pollenbelastung BEGINN -->
+            <article class="pollenbelastung">
+                <h2>Pollenbelastung:</h2>
+                <div id="pollen"></div>
+            </article>
+
+            <!-- Karte BEGINN -->
+            <article class="lageplan">
+                <h2>Karte:</h2>
+                <div id="karte"></div>
+            </article>
+
+            <!-- Niederschlag BEGINN -->
+            <article class="niederschlag">
+                <h2>Niederschlag:</h2>
+                <div>Vormittag</div>
+                <div id="regen00">☔️ 100%</div>
+                <div>Mittag</div>
+                <div id="regen01">☔️ 50%</div>
+                <div>Abend</div>
+                <div id="regen02"> 0%</div>
+                <div>Nacht</div>
+                <div id="regen03"> 0%</div>
             </article>
         </section>
     </main>
