@@ -32,5 +32,11 @@ fetch('/assets/js/weather.json')
     .then(response => response.json())
     .then(json => console.log(json))
 
-    // http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}
+// http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}
 
+// let jetzt = document.querySelectorAll('.jetzt');
+// console.log(jetzt);
+
+// /https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+
+// https://api.openweathermap.org/data/2.5/onecall?lat=48&lon=11&exclude=minutely&appid=8a7ea988db62a9c55f1acc2df392c401&units=metric&lang=de
