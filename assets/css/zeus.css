@@ -166,4 +166,26 @@ h3{
         ;
     }
 
+    #wrapper{
+        display: flex;
+        flex-direction: row;
+        width: 400vw;
+        transform: rotate(90deg) translateY(-30vh);
+        transform-origin: top left;
+        gap: 30px;
+        z-index: 1;
+    }
+    
+    #outer-wrapper {
+        width: 30vh;
+        height: 100vw;
+        transform: rotate(-90deg) translateX(-30vh);
+        transform-origin: top left;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        position: absolute;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
 }
