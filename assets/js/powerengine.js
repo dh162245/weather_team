@@ -18,9 +18,12 @@ let langLoad = lang.value.toLowerCase();
 
 window.onload = () => {
     console.log('%cDie Fantastic Four grüßen die Supernerds!', 'color:darkblue; font-weight:900;font-size:2rem;text-shadow: 5px 5px 5px yellow');
+    //currentlocation fetch -> Ausgabe cLocation Wetter und Co
+    //if fetch wrong -> Error Ausgabe
 
     currentLocation();
 
+    //onclick Ausgabe, Ausgabe nochmal extra reinschreiben wegen lat/long???
     console.log('%cZeus sagt: Iss deinen Teller leer, sonst gibt es schlechtes Wetter!', 'color:darkred; font-weight:900;font-size:2rem;text-shadow: 5px 5px 5px lightblue');
 }
 
@@ -173,16 +176,18 @@ function currentLocation() {
                     hour = hour.getHours();
 
                     weatheroutput.innerHTML +=
-                        `<div class="wrapper">
-                    <div class="weatherSymbol">
-                        <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
-                    </div>
-                    <div class="jetzt">
-                    <p class="icon">${ele.weather[0].description}</p>
-                    <p class="temperatur">${ele.temp}°C</p>
-                        <p class="time">${hour}:00</p>     
-                    </div>
-                </div>`
+                        `<div class="outer-wrapper>
+                            <div class="wrapper">
+                                <div class="weatherSymbol">
+                                <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
+                                </div>
+                            <div class="jetzt">
+                            <p class="icon">${ele.weather[0].description}</p>
+                            <p class="temperatur">${ele.temp}°C</p>
+                            <p class="time">${hour}:00</p> 
+                            </div>    
+                            </div>
+                        </div>`
                 })
 
                 json.daily.forEach(ele => {
@@ -455,16 +460,18 @@ submit.addEventListener('click', function letsrock() {
                             hour = hour.getHours();
 
                             weatheroutput.innerHTML +=
-                                `<div class="wrapper">
-                    <div class="weatherSymbol">
-                        <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
-                    </div>
-                        <div class="jetzt">
-                        <p class="icon">${ele.weather[0].description}</p>
-                        <p class="temperatur">${ele.temp}°C</p>
-                        <p class="time">${hour}:00</p>
-                    </div>
-                </div>`
+                                `<div class="outer-wrapper>
+                            <div class="wrapper">
+                                <div class="weatherSymbol">
+                                <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
+                                </div>
+                            <div class="jetzt">
+                            <p class="icon">${ele.weather[0].description}</p>
+                            <p class="temperatur">${ele.temp}°C</p>
+                            <p class="time">${hour}:00</p> 
+                            </div>    
+                            </div>
+                        </div>`
                         })
 
                         json.daily.forEach(ele => {
