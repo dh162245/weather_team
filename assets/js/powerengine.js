@@ -12,6 +12,7 @@ const key = '8a7ea988db62a9c55f1acc2df392c401';
 let units = 'metric';
 
 let weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'];
 let langLoad = lang.value.toLowerCase();
 
 
@@ -106,9 +107,41 @@ function currentLocation() {
                 } else {
                     ms = ms.getHours() + ':' + ms.getMinutes();
                 }
+
+                //wochentag
                 let weekDay = new Date(json.daily[0].dt * 1000);
                 console.log(weekDay);
                 console.log(weekDay.getDay());
+                //Mondphase aktuell
+                let mp = json.daily[0].moon_phase;
+                console.log(mp);
+                let moonphase;
+                if (mp == 0 || mp == 1) {
+                    console.log('New Moon -> ' + mp);
+                    moonphase = 'New Moon';
+                } else if (mp == 0.5) {
+                    console.log('Full Moon -> ' + mp);
+                    moonphase = 'Full Moon';
+                } else if (mp == 0.25) {
+                    console.log('First Quarter Moon -> ' + mp);
+                    moonphase = 'First Quarter Moon';
+                } else if (mp == 0.75) {
+                    console.log('Last Quarter Moon -> ' + mp);
+                    moonphase = 'Last Quarter Moon';
+                } else if (mp > 0 && mp < 0.25) {
+                    console.log('Waxing Crescent -> ' + mp);
+                    moonphase = 'Waxing Crescent';
+                } else if (mp > 0 && mp < 0.5) {
+                    console.log('Waxing Gibous -> ' + mp);
+                    moonphase = 'Waxing Gibous -> ' + mp;
+                } else if (mp > 0.5 && mp < 0.75) {
+                    console.log('Waniung Gibous -> ' + mp);
+                    moonphase = 'Waning Gibous';
+                } else if (mp > 0.75 && mp < 1) {
+                    console.log('Waning Crescent ->' + mp);
+                    moonphase = 'Waning Crescent';
+                }
+                //output
                 weatheroutput.innerHTML = `<h3>Current Weather</h3>
         <article class="day">
                 <div class="headline">
@@ -131,6 +164,7 @@ function currentLocation() {
                     <h3>Misc:</h3>
                     <p>Wind Speed: ${json.current.wind_speed} km/h</p>
                     <p>Humidity: ${json.current.humidity}%</p>
+                    <p>Moon Phase: ${moonphase}
                     <p>Moonrise: ${mr}</p>
                     <p>Moonset: ${ms}</p>
                     <p>Sunrise: ${sr}</p>
@@ -156,8 +190,8 @@ function currentLocation() {
                 })
 
                 json.daily.forEach(ele => {
-
                     console.log('daily');
+                    //Aufgänge Uhrzeiten
                     let srD = new Date(ele.sunrise * 1000);
                     if (srD.getHours() < 10 && srD.getMinutes() < 10) {
                         srD = '0' + srD.getHours() + ':' + '0' + srD.getMinutes();
@@ -201,12 +235,51 @@ function currentLocation() {
                     } else {
                         msD = msD.getHours() + ':' + msD.getMinutes();
                     }
+                    //Wochentag
                     let wDay = new Date(ele.dt * 1000);
                     console.log(wDay);
                     console.log(wDay.getDay());
+                    let dateD
+                    if (wDay.getDate() < 10) {
+                        dateD = `0${wDay.getDate()}.${months[wDay.getMonth()]} ${wDay.getFullYear()}`;
+                    } else {
+                        dateD = `${wDay.getDate()}.${months[wDay.getMonth()]}  ${wDay.getFullYear()}`;
+                    }
+
+                    //Mondphasen
+                    let mp = ele.moon_phase;
+                    console.log(mp);
+                    let moonphase;
+                    if (mp == 0 || mp == 1) {
+                        console.log('New Moon -> ' + mp);
+                        moonphase = 'New Moon';
+                    } else if (mp == 0.5) {
+                        console.log('Full Moon -> ' + mp);
+                        moonphase = 'Full Moon';
+                    } else if (mp == 0.25) {
+                        console.log('First Quarter Moon -> ' + mp);
+                        moonphase = 'First Quarter Moon';
+                    } else if (mp == 0.75) {
+                        console.log('Last Quarter Moon -> ' + mp);
+                        moonphase = 'Last Quarter Moon';
+                    } else if (mp > 0 && mp < 0.25) {
+                        console.log('Waxing Crescent -> ' + mp);
+                        moonphase = 'Waxing Crescent';
+                    } else if (mp > 0 && mp < 0.5) {
+                        console.log('Waxing Gibous -> ' + mp);
+                        moonphase = 'Waxing Gibous -> ' + mp;
+                    } else if (mp > 0.5 && mp < 0.75) {
+                        console.log('Waniung Gibous -> ' + mp);
+                        moonphase = 'Waning Gibous';
+                    } else if (mp > 0.75 && mp < 1) {
+                        console.log('Waning Crescent ->' + mp);
+                        moonphase = 'Waning Crescent';
+                    }
+                    //Output
                     weatheroutput.innerHTML += `<article class="day">
                         <div class="headline">
                             <h3 class="weekDay">${weekDays[wDay.getDay()]}</h3>
+                            <p>${dateD}</p>
                             <div class="weatherSymbol">
                                 <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
                             </div>
@@ -227,6 +300,7 @@ function currentLocation() {
                             <h3>Misc:</h3>
                             <p>Wind Speed: ${ele.wind_speed} km/h</p>
                             <p>Humidity: ${ele.humidity}%</p>
+                            <p>Moonphase: ${moonphase}</p>
                             <p>Moonrise: ${mrD}</p>
                             <p>Moonset: ${msD}</p>
                             <p>Sunrise: ${srD}</p>
@@ -317,9 +391,40 @@ submit.addEventListener('click', function letsrock() {
                         } else {
                             ms = ms.getHours() + ':' + ms.getMinutes();
                         }
+                        //Wochentag
                         let weekDay = new Date(json.daily[0].dt * 1000);
                         console.log(weekDay);
                         console.log(weekDay.getDay());
+                        //Mondphase
+                        let mp = json.daily[0].moon_phase;
+                        console.log(mp);
+                        let moonphase;
+                        if (mp == 0 || mp == 1) {
+                            console.log('New Moon -> ' + mp);
+                            moonphase = 'New Moon';
+                        } else if (mp == 0.5) {
+                            console.log('Full Moon -> ' + mp);
+                            moonphase = 'Full Moon';
+                        } else if (mp == 0.25) {
+                            console.log('First Quarter Moon -> ' + mp);
+                            moonphase = 'First Quarter Moon';
+                        } else if (mp == 0.75) {
+                            console.log('Last Quarter Moon -> ' + mp);
+                            moonphase = 'Last Quarter Moon';
+                        } else if (mp > 0 && mp < 0.25) {
+                            console.log('Waxing Crescent -> ' + mp);
+                            moonphase = 'Waxing Crescent';
+                        } else if (mp > 0 && mp < 0.5) {
+                            console.log('Waxing Gibous -> ' + mp);
+                            moonphase = 'Waxing Gibous -> ' + mp;
+                        } else if (mp > 0.5 && mp < 0.75) {
+                            console.log('Waniung Gibous -> ' + mp);
+                            moonphase = 'Waning Gibous';
+                        } else if (mp > 0.75 && mp < 1) {
+                            console.log('Waning Crescent ->' + mp);
+                            moonphase = 'Waning Crescent';
+                        }
+                        //output
                         weatheroutput.innerHTML = `<h3>Current Weather in ${city.value.toUpperCase()}</h3>
         <article class="day">
                 <div class="headline">
@@ -369,6 +474,7 @@ submit.addEventListener('click', function letsrock() {
                         json.daily.forEach(ele => {
 
                             console.log('daily');
+                            //Aufgänge Uhrzeiten
                             let srD = new Date(ele.sunrise * 1000);
                             if (srD.getHours() < 10 && srD.getMinutes() < 10) {
                                 srD = '0' + srD.getHours() + ':' + '0' + srD.getMinutes();
@@ -412,12 +518,51 @@ submit.addEventListener('click', function letsrock() {
                             } else {
                                 msD = msD.getHours() + ':' + msD.getMinutes();
                             }
+
+                            //Wochentag
                             let wDay = new Date(ele.dt * 1000);
                             console.log(wDay);
                             console.log(wDay.getDay());
+                            let dateD
+                            if (wDay.getDate() < 10) {
+                                dateD = `0${wDay.getDate()}.${months[wDay.getMonth()]} ${wDay.getFullYear()}`;
+                            } else {
+                                dateD = `${wDay.getDate()}.${months[wDay.getMonth()]}  ${wDay.getFullYear()}`;
+                            }
+                            //Mondphasen
+                            let mp = ele.moon_phase;
+                            console.log(mp);
+                            let moonphase;
+                            if (mp == 0 || mp == 1) {
+                                console.log('New Moon -> ' + mp);
+                                moonphase = 'New Moon';
+                            } else if (mp == 0.5) {
+                                console.log('Full Moon -> ' + mp);
+                                moonphase = 'Full Moon';
+                            } else if (mp == 0.25) {
+                                console.log('First Quarter Moon -> ' + mp);
+                                moonphase = 'First Quarter Moon';
+                            } else if (mp == 0.75) {
+                                console.log('Last Quarter Moon -> ' + mp);
+                                moonphase = 'Last Quarter Moon';
+                            } else if (mp > 0 && mp < 0.25) {
+                                console.log('Waxing Crescent -> ' + mp);
+                                moonphase = 'Waxing Crescent';
+                            } else if (mp > 0 && mp < 0.5) {
+                                console.log('Waxing Gibous -> ' + mp);
+                                moonphase = 'Waxing Gibous -> ' + mp;
+                            } else if (mp > 0.5 && mp < 0.75) {
+                                console.log('Waniung Gibous -> ' + mp);
+                                moonphase = 'Waning Gibous';
+                            } else if (mp > 0.75 && mp < 1) {
+                                console.log('Waning Crescent ->' + mp);
+                                moonphase = 'Waning Crescent';
+                            }
+                            //Output
                             weatheroutput.innerHTML += `<article class="day">
                         <div class="headline">
                             <h3 class="weekDay">${weekDays[wDay.getDay()]}</h3>
+                            <p>${dateD}</p>
                             <div class="weatherSymbol">
                                 <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
                             </div>
@@ -436,6 +581,7 @@ submit.addEventListener('click', function letsrock() {
                             <h3>Misc:</h3>
                             <p>Wind Speed: ${ele.wind_speed} km/h</p>
                             <p>Humidity: ${ele.humidity}</p>
+                            <p>Moon Phase: ${moonphase}</p>
                             <p>Moonrise: ${mrD}</p>
                             <p>Moonset: ${msD}</p>
                             <p>Sunrise: ${srD}</p>
@@ -447,31 +593,3 @@ submit.addEventListener('click', function letsrock() {
             }
         })
 })
-
-
-
-
-        //Tag{-> Klasse= 'Tag'
-        //     container headline -> <div>stuff</div>
-        //     container div <button class="accordion">Section 3</button>
-/* <div class="panel">
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div> */
-
-// }
-//Inhalt Tag: Wochentag, symbol wetter, höchste temp, niedr temp, Tagestemp -> div class= content id-> fortlaufend: restliche Infos.
-//-> pro Tag -> id + pro content id
-//pro Tag Headline -> classen, div-container -> Klassen
-
-
-
-
-
-
-
-// http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}
-
-
-// /https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-
-// https://api.openweathermap.org/data/2.5/onecall?lat=48&lon=11&exclude=minutely&appid=8a7ea988db62a9c55f1acc2df392c401&units=metric&lang=de
