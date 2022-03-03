@@ -18,8 +18,8 @@
   }
 
 body{
-    /* background: linear-gradient(#0e1049, #01a2ff); */
-    background: url(../img/big_bg-with-watermark01.png) no-repeat center/cover;
+    background: linear-gradient(#0e1049, #01a2ff);
+    /* background: url(../img/big_bg-with-watermark01.png) no-repeat center/cover; */
     color: #fff;
     font-family: 'Roboto-Regular';
 }
@@ -187,5 +187,6 @@ h3{
         scrollbar-width: none;
         -ms-overflow-style: none;
       }
+      
 
 }
