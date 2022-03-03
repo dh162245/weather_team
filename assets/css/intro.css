@@ -11,6 +11,14 @@
     src: url(../fonts/Roboto/Roboto-Regular.ttf);
   }
 
+  body::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
 a{
     text-decoration: none;
 }
@@ -21,6 +29,7 @@ a{
         background-size: calc(100%);
         overflow: hidden;
     }
+<<<<<<< HEAD
     body::-webkit-scrollbar {
         display: none;
         -ms-overflow-style: none;
@@ -28,6 +37,9 @@ a{
         scrollbar-width: none;
         /* Firefox */
       }
+=======
+   
+>>>>>>> bd2681edb3d9124cfa47631419a2854bdfdee247
     header{
         height: 100vh;
     }
