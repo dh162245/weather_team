@@ -18,13 +18,9 @@ let langLoad = lang.value.toLowerCase();
 
 window.onload = () => {
     console.log('%cDie Fantastic Four grüßen die Supernerds!', 'color:darkblue; font-weight:900;font-size:2rem;text-shadow: 5px 5px 5px yellow');
-    //currentlocation fetch -> Ausgabe cLocation Wetter und Co
-    //if fetch wrong -> Error Ausgabe
 
     currentLocation();
 
-
-    //onclick Ausgabe, Ausgabe nochmal extra reinschreiben wegen lat/long???
     console.log('%cZeus sagt: Iss deinen Teller leer, sonst gibt es schlechtes Wetter!', 'color:darkred; font-weight:900;font-size:2rem;text-shadow: 5px 5px 5px lightblue');
 }
 
