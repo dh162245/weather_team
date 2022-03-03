@@ -21,6 +21,13 @@ a{
         background-size: calc(100%);
         overflow: hidden;
     }
+    body::-webkit-scrollbar {
+        display: none;
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+      }
     header{
         height: 100vh;
     }
@@ -82,7 +89,7 @@ a{
         overflow-y: scroll;
         overflow-x: hidden;
         position: absolute;
-        /* scrollbar-width: none; */
+        scrollbar-width: none;
         -ms-overflow-style: none;
       }
 
