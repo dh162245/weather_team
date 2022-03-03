@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
+
+/* font-family: 'Inconsolata', monospace; 
+w/*/
+
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+#clock{
+    font-size: 30px;
+    font-family: 'Inconsolata', monospace;
+    text-align: center;
+}
+
+select{
+    height: 3.5vh;
+    font-family: 'Inconsolata', monospace;
+}
+
+#deineSprache{
+    font-family: 'Inconsolata', monospace;  
+}
+
+/* select option {
+    background-color: blue !important;
+}
+
+select option:hover{
+    background: #fff;
+} */
+
+#push{
+    font-family: 'Inconsolata', monospace;
+    color: #fff;
+    background-color: green;
+    border: none;
+    box-shadow: 0px 0px 10px #fff;
+    padding: 5px 10px 5px 10px;  
+}
+.container{
+    border: 1px solid blue;
+    background-color: blue;
+}
+
+form{
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+#deineStadt{
+    font-family: 'Inconsolata', monospace;   
+    height: 3vh;
+}
+
+.auswahl{
+    width: 100vw;
+    
+}
+.zeus{
+    width: 100%;
+    height: 70vh;
+    background: url('../img/zeus.png') no-repeat center/cover;
+
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    width: 400vw;
+    transform: rotate(90deg) translateY(-30vh);
+    transform-origin: top left;
+    gap: 30px;
+}
+
+.outer-wrapper {
+    width: 30vh;
+    height: 100vw;
+    transform: rotate(-90deg) translateX(-30vh);
+    transform-origin: top left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    /* scrollbar-width: none; */
+    -ms-overflow-style: none;
+  }
+
+
+h2{
+    font-family: 'Inconsolata', monospace;
+    text-align: center;
+    font-size: 35px;
+    margin: 1rem;
+}
