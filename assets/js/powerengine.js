@@ -5,7 +5,9 @@ let coordinates
 let city = document.getElementById('deineStadt');
 let submit = document.getElementById('push');
 let buttoncL = document.getElementById('currentLoc');
-let weatheroutput = document.getElementById('output');
+let outputCurrent = document.getElementById('outputCurrent');
+let outputHour = document.getElementById('wrapper');
+let outputDaily = document.getElementById('outputDaily');
 let langSelec
 let url;
 const key = '8a7ea988db62a9c55f1acc2df392c401';
@@ -141,7 +143,7 @@ function currentLocation() {
                     moonphase = 'Waning Crescent';
                 }
                 //output
-                weatheroutput.innerHTML = `<h3>Current Weather</h3>
+                outputCurrent.innerHTML = `<h3>Current Weather</h3>
         <article class="day">
                 <div class="headline">
                     <h3 class="weekDay">${weekDays[weekDay.getDay()]}</h3>
@@ -175,19 +177,15 @@ function currentLocation() {
                     let hour = new Date(ele.dt * 1000);
                     hour = hour.getHours();
 
-                    weatheroutput.innerHTML +=
-                        `<div class="outer-wrapper>
-                            <div class="wrapper">
-                                <div class="weatherSymbol">
+                    outputHour.innerHTML +=
+                        `<div class="weatherSymbol">
                                 <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
-                                </div>
-                            <div class="jetzt">
-                            <p class="icon">${ele.weather[0].description}</p>
-                            <p class="temperatur">${ele.temp}°C</p>
-                            <p class="time">${hour}:00</p> 
-                            </div>    
                             </div>
-                        </div>`
+                            <div class="jetzt">
+                                <p class="icon">${ele.weather[0].description}</p>
+                                <p class="temperatur">${ele.temp}°C</p>
+                                <p class="time">${hour}:00</p>
+                            </div>`;
                 })
 
                 json.daily.forEach(ele => {
@@ -277,7 +275,7 @@ function currentLocation() {
                         moonphase = 'Waning Crescent';
                     }
                     //Output
-                    weatheroutput.innerHTML += `<article class="day">
+                    outputDaily.innerHTML += `<article class="day">
                         <div class="headline">
                             <h3 class="weekDay">${weekDays[wDay.getDay()]}</h3>
                             <p>${dateD}</p>
@@ -426,7 +424,7 @@ submit.addEventListener('click', function letsrock() {
                             moonphase = 'Waning Crescent';
                         }
                         //output
-                        weatheroutput.innerHTML = `<h3>Current Weather in ${city.value.toUpperCase()}</h3>
+                        outputCurrent.innerHTML = `<h3>Current Weather in ${city.value.toUpperCase()}</h3>
         <article class="day">
                 <div class="headline">
                     <h3 class="weekDay">${weekDays[weekDay.getDay()]}</h3>
@@ -459,19 +457,15 @@ submit.addEventListener('click', function letsrock() {
                             let hour = new Date(ele.dt * 1000);
                             hour = hour.getHours();
 
-                            weatheroutput.innerHTML +=
-                                `<div class="outer-wrapper>
-                            <div class="wrapper">
-                                <div class="weatherSymbol">
+                            outputHour.innerHTML +=
+                                `<div class="weatherSymbol">
                                 <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
-                                </div>
-                            <div class="jetzt">
-                            <p class="icon">${ele.weather[0].description}</p>
-                            <p class="temperatur">${ele.temp}°C</p>
-                            <p class="time">${hour}:00</p> 
-                            </div>    
                             </div>
-                        </div>`
+                            <div class="jetzt">
+                                <p class="icon">${ele.weather[0].description}</p>
+                                <p class="temperatur">${ele.temp}°C</p>
+                                <p class="time">${hour}:00</p>
+                            </div>`;
                         })
 
                         json.daily.forEach(ele => {
@@ -562,7 +556,7 @@ submit.addEventListener('click', function letsrock() {
                                 moonphase = 'Waning Crescent';
                             }
                             //Output
-                            weatheroutput.innerHTML += `<article class="day">
+                            outputDaily.innerHTML += `<article class="day">
                         <div class="headline">
                             <h3 class="weekDay">${weekDays[wDay.getDay()]}</h3>
                             <p>${dateD}</p>
@@ -596,3 +590,4 @@ submit.addEventListener('click', function letsrock() {
             }
         })
 })
+
