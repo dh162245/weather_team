@@ -20,12 +20,8 @@ let langLoad = lang.value.toLowerCase();
 
 window.onload = () => {
     console.log('%cDie Fantastic Four grüßen die Supernerds!', 'color:darkblue; font-weight:900;font-size:2rem;text-shadow: 5px 5px 5px yellow');
-    //currentlocation fetch -> Ausgabe cLocation Wetter und Co
-    //if fetch wrong -> Error Ausgabe
-
     currentLocation();
 
-    //onclick Ausgabe, Ausgabe nochmal extra reinschreiben wegen lat/long???
     console.log('%cZeus sagt: Iss deinen Teller leer, sonst gibt es schlechtes Wetter!', 'color:darkred; font-weight:900;font-size:2rem;text-shadow: 5px 5px 5px lightblue');
 }
 
@@ -60,7 +56,7 @@ function currentLocation() {
         //hier ausgabe onload
         //Asugabe
 
-        fetch('/assets/js/weather.json')
+        fetch(url)
             .then(response => response.json())
             .then(json => {
                 console.log(json);
@@ -115,31 +111,22 @@ function currentLocation() {
                 console.log(weekDay.getDay());
                 //Mondphase aktuell
                 let mp = json.daily[0].moon_phase;
-                console.log(mp);
                 let moonphase;
                 if (mp == 0 || mp == 1) {
-                    console.log('New Moon -> ' + mp);
                     moonphase = 'New Moon';
                 } else if (mp == 0.5) {
-                    console.log('Full Moon -> ' + mp);
                     moonphase = 'Full Moon';
                 } else if (mp == 0.25) {
-                    console.log('First Quarter Moon -> ' + mp);
                     moonphase = 'First Quarter Moon';
                 } else if (mp == 0.75) {
-                    console.log('Last Quarter Moon -> ' + mp);
                     moonphase = 'Last Quarter Moon';
                 } else if (mp > 0 && mp < 0.25) {
-                    console.log('Waxing Crescent -> ' + mp);
                     moonphase = 'Waxing Crescent';
                 } else if (mp > 0 && mp < 0.5) {
-                    console.log('Waxing Gibous -> ' + mp);
                     moonphase = 'Waxing Gibous -> ' + mp;
                 } else if (mp > 0.5 && mp < 0.75) {
-                    console.log('Waniung Gibous -> ' + mp);
                     moonphase = 'Waning Gibous';
                 } else if (mp > 0.75 && mp < 1) {
-                    console.log('Waning Crescent ->' + mp);
                     moonphase = 'Waning Crescent';
                 }
                 //output
@@ -237,7 +224,6 @@ function currentLocation() {
                     //Wochentag
                     let wDay = new Date(ele.dt * 1000);
                     console.log(wDay);
-                    console.log(wDay.getDay());
                     let dateD
                     if (wDay.getDate() < 10) {
                         dateD = `0${wDay.getDate()}.${months[wDay.getMonth()]} ${wDay.getFullYear()}`;
@@ -247,31 +233,22 @@ function currentLocation() {
 
                     //Mondphasen
                     let mp = ele.moon_phase;
-                    console.log(mp);
                     let moonphase;
                     if (mp == 0 || mp == 1) {
-                        console.log('New Moon -> ' + mp);
                         moonphase = 'New Moon';
                     } else if (mp == 0.5) {
-                        console.log('Full Moon -> ' + mp);
                         moonphase = 'Full Moon';
                     } else if (mp == 0.25) {
-                        console.log('First Quarter Moon -> ' + mp);
                         moonphase = 'First Quarter Moon';
                     } else if (mp == 0.75) {
-                        console.log('Last Quarter Moon -> ' + mp);
                         moonphase = 'Last Quarter Moon';
                     } else if (mp > 0 && mp < 0.25) {
-                        console.log('Waxing Crescent -> ' + mp);
                         moonphase = 'Waxing Crescent';
                     } else if (mp > 0 && mp < 0.5) {
-                        console.log('Waxing Gibous -> ' + mp);
                         moonphase = 'Waxing Gibous -> ' + mp;
                     } else if (mp > 0.5 && mp < 0.75) {
-                        console.log('Waniung Gibous -> ' + mp);
                         moonphase = 'Waning Gibous';
                     } else if (mp > 0.75 && mp < 1) {
-                        console.log('Waning Crescent ->' + mp);
                         moonphase = 'Waning Crescent';
                     }
                     //Output
@@ -342,7 +319,7 @@ submit.addEventListener('click', function letsrock() {
                 let coordinatesS = `lat=${latSelec}&lon=${lonSelec}`;
                 let url2 = `http://api.openweathermap.org/data/2.5/onecall?${coordinatesS}&appid=${key}&units=${units}&lang=${langSelec}`;
                 console.log(url2);
-                fetch('/assets/js/weather.json')
+                fetch(url2)
                     .then(response => response.json())
                     .then(json => {
                         console.log(json);
@@ -399,28 +376,20 @@ submit.addEventListener('click', function letsrock() {
                         console.log(mp);
                         let moonphase;
                         if (mp == 0 || mp == 1) {
-                            console.log('New Moon -> ' + mp);
                             moonphase = 'New Moon';
                         } else if (mp == 0.5) {
-                            console.log('Full Moon -> ' + mp);
                             moonphase = 'Full Moon';
                         } else if (mp == 0.25) {
-                            console.log('First Quarter Moon -> ' + mp);
                             moonphase = 'First Quarter Moon';
                         } else if (mp == 0.75) {
-                            console.log('Last Quarter Moon -> ' + mp);
                             moonphase = 'Last Quarter Moon';
                         } else if (mp > 0 && mp < 0.25) {
-                            console.log('Waxing Crescent -> ' + mp);
                             moonphase = 'Waxing Crescent';
                         } else if (mp > 0 && mp < 0.5) {
-                            console.log('Waxing Gibous -> ' + mp);
                             moonphase = 'Waxing Gibous -> ' + mp;
                         } else if (mp > 0.5 && mp < 0.75) {
-                            console.log('Waniung Gibous -> ' + mp);
                             moonphase = 'Waning Gibous';
                         } else if (mp > 0.75 && mp < 1) {
-                            console.log('Waning Crescent ->' + mp);
                             moonphase = 'Waning Crescent';
                         }
                         //output
@@ -519,7 +488,6 @@ submit.addEventListener('click', function letsrock() {
                             //Wochentag
                             let wDay = new Date(ele.dt * 1000);
                             console.log(wDay);
-                            console.log(wDay.getDay());
                             let dateD
                             if (wDay.getDate() < 10) {
                                 dateD = `0${wDay.getDate()}.${months[wDay.getMonth()]} ${wDay.getFullYear()}`;
@@ -531,28 +499,20 @@ submit.addEventListener('click', function letsrock() {
                             console.log(mp);
                             let moonphase;
                             if (mp == 0 || mp == 1) {
-                                console.log('New Moon -> ' + mp);
                                 moonphase = 'New Moon';
                             } else if (mp == 0.5) {
-                                console.log('Full Moon -> ' + mp);
                                 moonphase = 'Full Moon';
                             } else if (mp == 0.25) {
-                                console.log('First Quarter Moon -> ' + mp);
                                 moonphase = 'First Quarter Moon';
                             } else if (mp == 0.75) {
-                                console.log('Last Quarter Moon -> ' + mp);
                                 moonphase = 'Last Quarter Moon';
                             } else if (mp > 0 && mp < 0.25) {
-                                console.log('Waxing Crescent -> ' + mp);
                                 moonphase = 'Waxing Crescent';
                             } else if (mp > 0 && mp < 0.5) {
-                                console.log('Waxing Gibous -> ' + mp);
                                 moonphase = 'Waxing Gibous -> ' + mp;
                             } else if (mp > 0.5 && mp < 0.75) {
-                                console.log('Waniung Gibous -> ' + mp);
                                 moonphase = 'Waning Gibous';
                             } else if (mp > 0.75 && mp < 1) {
-                                console.log('Waning Crescent ->' + mp);
                                 moonphase = 'Waning Crescent';
                             }
                             //Output
