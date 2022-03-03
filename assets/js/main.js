@@ -21,6 +21,7 @@ window.onload = () => {
 }
 
 function currentLocation() {
+    let url = '';
     var options = {
         enableHighAccuracy: true,
         timeout: 10000,  //-> time until this command is expired/not tried anymore (also, it hates the number 5000)
@@ -40,11 +41,11 @@ function currentLocation() {
         console.log(lon);
         console.log(coordinates);
         //define URL for fetch
-        let urlcL = `http://api.openweathermap.org/data/2.5/onecall?${coordinates}&appid=${key}&units=${units}&lang=${lang}`;
-        console.log(urlcL);
+        url = `http://api.openweathermap.org/data/2.5/onecall?${coordinates}&appid=${key}&units=${units}&lang=${lang}`;
+        console.log(url);
         //hier ausgabe onload
         //Asugabe
-        fetch('/assets/js/weather.json')
+        fetch(url)
             .then(response => response.json())
             .then(json => {
                 console.log(json);
@@ -58,7 +59,7 @@ function currentLocation() {
                     let hour = new Date(ele.dt * 1000);
                     hour = hour.getHours();
                     weatheroutput.innerHTML += ` 
-        
+
         <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
         </div>
         <div class="jetzt">
