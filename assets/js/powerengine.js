@@ -18,6 +18,7 @@ let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Ok
 let langLoad = lang.value.toLowerCase();
 
 
+
 window.onload = () => {
     console.log('%cDie Fantastic Four grüßen die Supernerds!', 'color:darkblue; font-weight:900;font-size:2rem;text-shadow: 5px 5px 5px yellow');
     //currentlocation fetch -> Ausgabe cLocation Wetter und Co
