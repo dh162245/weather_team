@@ -64,13 +64,48 @@ function currentLocation() {
                 console.log(json);
                 console.log('current Day');
                 let sr = new Date(json.current.sunrise * 1000);
-                sr = sr.getHours() + ":" + sr.getMinutes()
+                if (sr.getHours() < 10 && sr.getMinutes() < 10) {
+                    sr = '0' + sr.getHours() + ':' + '0' + sr.getMinutes();
+                } else if (sr.getHours() < 10) {
+                    sr = '0' + sr.getHours() + ':' + sr.getMinutes();
+                } else if (sr.getMinutes() < 10) {
+                    sr = sr.getHours() + ':' + '0' + sr.getMinutes();
+                } else {
+                    sr = sr.getHours() + ":" + sr.getMinutes();
+                }
+
                 let ss = new Date(json.current.sunset * 1000);
-                ss = ss.getHours() + ":" + ss.getMinutes();
+                if (ss.getHours() < 10 && ss.getMinutes() < 10) {
+                    ss = '0' + ss.getHours() + ':' + '0' + ss.getMinutes();
+                } else if (ss.getHours() < 10) {
+                    ss = '0' + ss.getHours() + ':' + ss.getMinutes();
+                } else if (ss.getMinutes() < 10) {
+                    ss = ss.getHours() + ':' + '0' + ss.getMinutes();
+                } else {
+                    ss = ss.getHours() + ":" + ss.getMinutes();
+                }
+
                 let mr = new Date(json.daily[0].moonrise * 1000);
-                mr = mr.getHours() + ':' + mr.getMinutes();
+                if (mr.getHours() < 10 && mr.getMinutes() < 10) {
+                    mr = '0' + mr.getHours() + ':' + '0' + mr.getMinutes();
+                } else if (mr.getHours() < 10) {
+                    mr = '0' + mr.getHours() + ':' + mr.getMinutes();
+                } else if (mr.getMinutes() < 10) {
+                    mr = mr.getHours() + ':' + '0' + mr.getMinutes();
+                } else {
+                    mr = mr.getHours() + ':' + mr.getMinutes();
+                }
+
                 let ms = new Date(json.daily[0].moonset * 1000);
-                ms = ms.getHours() + ':' + ms.getMinutes();
+                if (ms.getHours() < 10 && ms.getMinutes() < 10) {
+                    ms = '0' + ms.getHours() + ':' + '0' + ms.getMinutes();
+                } else if (ms.getHours() < 10) {
+                    ms = '0' + ms.getHours() + ':' + ms.getMinutes();
+                } else if (ms.getMinutes() < 10) {
+                    ms = ms.getHours() + ':' + '0' + ms.getMinutes();
+                } else {
+                    ms = ms.getHours() + ':' + ms.getMinutes();
+                }
                 let weekDay = new Date(json.daily[0].dt * 1000);
                 console.log(weekDay);
                 console.log(weekDay.getDay());
@@ -78,13 +113,13 @@ function currentLocation() {
         <article class="day">
                 <div class="headline">
                     <h3 class="weekDay">${weekDays[weekDay.getDay()]}</h3>
+                    <p class="dayTemp"> ${Math.round(json.current.temp)}°C</p>
                     <div class="weatherSymbol">
                         <img src="http://openweathermap.org/img/wn/${json.current.weather[0].icon}@4x.png" alt="${json.current.weather[0].description}">
                     </div>
-                    <p class="minTemp">Min. Temp. ${json.daily[0].temp.min}°C</p>
-                    <p class="maxTemp">Max. Temp. ${json.daily[0].temp.max}°C</p>
-                    <p class="dayTemp">Day Temp. ${json.current.temp}°C</p>
                     <p>${json.current.weather[0].description}</p>
+                    <p class="minTemp">Min. Temp. ${Math.round(json.daily[0].temp.min)}°C</p>
+                    <p class="maxTemp">Max. Temp. ${Math.round(json.daily[0].temp.max)}°C</p>
                 </div>
                 <button class="accordion">More Info</button>
                 <div class="panel">
@@ -95,7 +130,7 @@ function currentLocation() {
                     <p>Night: ${json.daily[0].temp.night}°C</p>
                     <h3>Misc:</h3>
                     <p>Wind Speed: ${json.current.wind_speed} km/h</p>
-                    <p>Humidity: ${json.current.humidity}</p>
+                    <p>Humidity: ${json.current.humidity}%</p>
                     <p>Moonrise: ${mr}</p>
                     <p>Moonset: ${ms}</p>
                     <p>Sunrise: ${sr}</p>
@@ -113,9 +148,9 @@ function currentLocation() {
                         <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
                     </div>
                     <div class="jetzt">
-                        <p class="time">${hour}:00</p>
-                        <p class="icon">${ele.weather[0].description}</p>
-                        <p class="temperatur">${ele.temp}°C</p>
+                    <p class="icon">${ele.weather[0].description}</p>
+                    <p class="temperatur">${ele.temp}°C</p>
+                        <p class="time">${hour}:00</p>     
                     </div>
                 </div>`
                 })
@@ -124,13 +159,48 @@ function currentLocation() {
 
                     console.log('daily');
                     let srD = new Date(ele.sunrise * 1000);
-                    srD = srD.getHours() + ":" + srD.getMinutes()
+                    if (srD.getHours() < 10 && srD.getMinutes() < 10) {
+                        srD = '0' + srD.getHours() + ':' + '0' + srD.getMinutes();
+                    } else if (srD.getHours() < 10) {
+                        srD = '0' + srD.getHours() + ':' + srD.getMinutes();
+                    } else if (srD.getMinutes() < 10) {
+                        srD = srD.getHours() + ':' + '0' + srD.getMinutes();
+                    } else {
+                        srD = srD.getHours() + ":" + srD.getMinutes();
+                    };
+
                     let ssD = new Date(ele.sunset * 1000);
-                    ssD = ssD.getHours() + ":" + ssD.getMinutes();
+                    if (ssD.getHours() < 10 && ssD.getMinutes() < 10) {
+                        ssD = '0' + ssD.getHours() + ':' + '0' + ssD.getMinutes();
+                    } else if (ssD.getHours() < 10) {
+                        ssD = '0' + ssD.getHours() + ':' + ssD.getMinutes();
+                    } else if (ssD.getMinutes() < 10) {
+                        ssD = ssD.getHours() + ':' + '0' + ssD.getMinutes();
+                    } else {
+                        ssD = ssD.getHours() + ":" + ssD.getMinutes();
+                    }
+
                     let mrD = new Date(ele.moonrise * 1000);
-                    mrD = mrD.getHours() + ':' + mrD.getMinutes();
+                    if (mrD.getHours() < 10 && mrD.getMinutes() < 10) {
+                        mrD = '0' + mrD.getHours() + ':' + '0' + mrD.getMinutes();
+                    } else if (mrD.getHours() < 10) {
+                        mrD = '0' + mrD.getHours() + ':' + mrD.getMinutes();
+                    } else if (mrD.getMinutes() < 10) {
+                        mrD = mrD.getHours() + ':' + '0' + mrD.getMinutes();
+                    } else {
+                        mrD = mrD.getHours() + ':' + mrD.getMinutes();
+                    }
+
                     let msD = new Date(ele.moonset * 1000);
-                    msD = msD.getHours() + ':' + msD.getMinutes();
+                    if (msD.getHours() < 10 && msD.getMinutes() < 10) {
+                        msD = '0' + msD.getHours() + ':' + '0' + msD.getMinutes();
+                    } else if (msD.getHours() < 10) {
+                        msD = '0' + msD.getHours() + ':' + msD.getMinutes();
+                    } else if (msD.getMinutes() < 10) {
+                        msD = msD.getHours() + ':' + '0' + msD.getMinutes();
+                    } else {
+                        msD = msD.getHours() + ':' + msD.getMinutes();
+                    }
                     let wDay = new Date(ele.dt * 1000);
                     console.log(wDay);
                     console.log(wDay.getDay());
@@ -140,10 +210,12 @@ function currentLocation() {
                             <div class="weatherSymbol">
                                 <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
                             </div>
+                            <p>${ele.weather[0].description}</p>
+                            <p class="dayTemp"> ${ele.temp.day}°C</p>
                             <p class="minTemp">Min. Temp. ${ele.temp.min}°C</p>
                             <p class="maxTemp">Max. Temp. ${ele.temp.max}°C</p>
-                            <p class="dayTemp">Day Temp. ${ele.temp.day}°C</p>
-                            <p>${ele.weather[0].description}</p>
+                            
+                            
                         </div>
                         <button class="accordion">More Info</button>
                         <div class="panel">
@@ -154,7 +226,7 @@ function currentLocation() {
                             <p>Night: ${ele.temp.night}°C</p>
                             <h3>Misc:</h3>
                             <p>Wind Speed: ${ele.wind_speed} km/h</p>
-                            <p>Humidity: ${ele.humidity}</p>
+                            <p>Humidity: ${ele.humidity}%</p>
                             <p>Moonrise: ${mrD}</p>
                             <p>Moonset: ${msD}</p>
                             <p>Sunrise: ${srD}</p>
@@ -163,10 +235,11 @@ function currentLocation() {
                     </article>`;
                 })
             })
-
     }
     function error(err) {
         console.warn(`ERROR(${err.code}): ${err.message}`);
+        weatheroutput.innerHTML = `<article class="day">
+        <h3 class="weekDay">Sorry, we couldn't find your Geo-Location :(</h3><h3> Please enter a cityname, maybe this will work :)</h3></article>`
     }
     navigator.geolocation.getCurrentPosition(success, error, options);
 }
@@ -195,15 +268,50 @@ submit.addEventListener('click', function letsrock() {
                 .then(response => response.json())
                 .then(json => {
                     console.log(json);
-                    console.log('current Day in ' + city.value.toUpperCase());
+                    console.log('current Weather in ' + city.value.toUpperCase());
                     let sr = new Date(json.current.sunrise * 1000);
-                    sr = sr.getHours() + ":" + sr.getMinutes()
+                    if (sr.getHours() < 10 && sr.getMinutes() < 10) {
+                        sr = '0' + sr.getHours() + ':' + '0' + sr.getMinutes();
+                    } else if (sr.getHours() < 10) {
+                        sr = '0' + sr.getHours() + ':' + sr.getMinutes();
+                    } else if (sr.getMinutes() < 10) {
+                        sr = sr.getHours() + ':' + '0' + sr.getMinutes();
+                    } else {
+                        sr = sr.getHours() + ":" + sr.getMinutes();
+                    }
+
                     let ss = new Date(json.current.sunset * 1000);
-                    ss = ss.getHours() + ":" + ss.getMinutes();
+                    if (ss.getHours() < 10 && ss.getMinutes() < 10) {
+                        ss = '0' + ss.getHours() + ':' + '0' + ss.getMinutes();
+                    } else if (ss.getHours() < 10) {
+                        ss = '0' + ss.getHours() + ':' + ss.getMinutes();
+                    } else if (ss.getMinutes() < 10) {
+                        ss = ss.getHours() + ':' + '0' + ss.getMinutes();
+                    } else {
+                        ss = ss.getHours() + ":" + ss.getMinutes();
+                    }
+
                     let mr = new Date(json.daily[0].moonrise * 1000);
-                    mr = mr.getHours() + ':' + mr.getMinutes();
+                    if (mr.getHours() < 10 && mr.getMinutes() < 10) {
+                        mr = '0' + mr.getHours() + ':' + '0' + mr.getMinutes();
+                    } else if (mr.getHours() < 10) {
+                        mr = '0' + mr.getHours() + ':' + mr.getMinutes();
+                    } else if (mr.getMinutes() < 10) {
+                        mr = mr.getHours() + ':' + '0' + mr.getMinutes();
+                    } else {
+                        mr = mr.getHours() + ':' + mr.getMinutes();
+                    }
+
                     let ms = new Date(json.daily[0].moonset * 1000);
-                    ms = ms.getHours() + ':' + ms.getMinutes();
+                    if (ms.getHours() < 10 && ms.getMinutes() < 10) {
+                        ms = '0' + ms.getHours() + ':' + '0' + ms.getMinutes();
+                    } else if (ms.getHours() < 10) {
+                        ms = '0' + ms.getHours() + ':' + ms.getMinutes();
+                    } else if (ms.getMinutes() < 10) {
+                        ms = ms.getHours() + ':' + '0' + ms.getMinutes();
+                    } else {
+                        ms = ms.getHours() + ':' + ms.getMinutes();
+                    }
                     let weekDay = new Date(json.daily[0].dt * 1000);
                     console.log(weekDay);
                     console.log(weekDay.getDay());
@@ -211,13 +319,13 @@ submit.addEventListener('click', function letsrock() {
         <article class="day">
                 <div class="headline">
                     <h3 class="weekDay">${weekDays[weekDay.getDay()]}</h3>
+                    <p class="dayTemp">${Math.round(json.current.temp)}°C</p>
                     <div class="weatherSymbol">
                         <img src="http://openweathermap.org/img/wn/${json.current.weather[0].icon}@4x.png" alt="${json.current.weather[0].description}">
                     </div>
-                    <p class="minTemp">Min. Temp. ${json.daily[0].temp.min}°C</p>
-                    <p class="maxTemp">Max. Temp. ${json.daily[0].temp.max}°C</p>
-                    <p class="dayTemp">Day Temp. ${json.current.temp}°C</p>
                     <p>${json.current.weather[0].description}</p>
+                    <p class="minTemp">Min. Temp. ${Math.round(json.daily[0].temp.min)}°C</p>
+                    <p class="maxTemp">Max. Temp. ${Math.round(json.daily[0].temp.max)}°C</p>
                 </div>
                 <button class="accordion">More Info</button>
                 <div class="panel">
@@ -245,10 +353,10 @@ submit.addEventListener('click', function letsrock() {
                     <div class="weatherSymbol">
                         <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
                     </div>
-                    <div class="jetzt">
-                        <p class="time">${hour}:00</p>
+                        <div class="jetzt">
                         <p class="icon">${ele.weather[0].description}</p>
                         <p class="temperatur">${ele.temp}°C</p>
+                        <p class="time">${hour}:00</p>
                     </div>
                 </div>`
                     })
@@ -257,13 +365,48 @@ submit.addEventListener('click', function letsrock() {
 
                         console.log('daily');
                         let srD = new Date(ele.sunrise * 1000);
-                        srD = srD.getHours() + ":" + srD.getMinutes()
+                        if (srD.getHours() < 10 && srD.getMinutes() < 10) {
+                            srD = '0' + srD.getHours() + ':' + '0' + srD.getMinutes();
+                        } else if (srD.getHours() < 10) {
+                            srD = '0' + srD.getHours() + ':' + srD.getMinutes();
+                        } else if (srD.getMinutes() < 10) {
+                            srD = srD.getHours() + ':' + '0' + srD.getMinutes();
+                        } else {
+                            srD = srD.getHours() + ":" + srD.getMinutes();
+                        }
+
                         let ssD = new Date(ele.sunset * 1000);
-                        ssD = ssD.getHours() + ":" + ssD.getMinutes();
+                        if (ssD.getHours() < 10 && ssD.getMinutes() < 10) {
+                            ssD = '0' + ssD.getHours() + ':' + '0' + ssD.getMinutes();
+                        } else if (ssD.getHours() < 10) {
+                            ssD = '0' + ssD.getHours() + ':' + ssD.getMinutes();
+                        } else if (ssD.getMinutes() < 10) {
+                            ssD = ssD.getHours() + ':' + '0' + ssD.getMinutes();
+                        } else {
+                            ssD = ssD.getHours() + ":" + ssD.getMinutes();
+                        }
+
                         let mrD = new Date(ele.moonrise * 1000);
-                        mrD = mrD.getHours() + ':' + mrD.getMinutes();
+                        if (mrD.getHours() < 10 && mrD.getMinutes() < 10) {
+                            mrD = '0' + mrD.getHours() + ':' + '0' + mrD.getMinutes();
+                        } else if (mrD.getHours() < 10) {
+                            mrD = '0' + mrD.getHours() + ':' + mrD.getMinutes();
+                        } else if (mrD.getMinutes() < 10) {
+                            mrD = mrD.getHours() + ':' + '0' + mrD.getMinutes();
+                        } else {
+                            mrD = mrD.getHours() + ':' + mrD.getMinutes();
+                        }
+
                         let msD = new Date(ele.moonset * 1000);
-                        msD = msD.getHours() + ':' + msD.getMinutes();
+                        if (msD.getHours() < 10 && msD.getMinutes() < 10) {
+                            msD = '0' + msD.getHours() + ':' + '0' + msD.getMinutes();
+                        } else if (msD.getHours() < 10) {
+                            msD = '0' + msD.getHours() + ':' + msD.getMinutes();
+                        } else if (msD.getMinutes() < 10) {
+                            msD = msD.getHours() + ':' + '0' + msD.getMinutes();
+                        } else {
+                            msD = msD.getHours() + ':' + msD.getMinutes();
+                        }
                         let wDay = new Date(ele.dt * 1000);
                         console.log(wDay);
                         console.log(wDay.getDay());
@@ -273,10 +416,10 @@ submit.addEventListener('click', function letsrock() {
                             <div class="weatherSymbol">
                                 <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
                             </div>
+                            <p>${ele.weather[0].description}</p>
+                            <p class="dayTemp">${ele.temp.day}°C</p>
                             <p class="minTemp">Min. Temp. ${ele.temp.min}°C</p>
                             <p class="maxTemp">Max. Temp. ${ele.temp.max}°C</p>
-                            <p class="dayTemp">Day Temp. ${ele.temp.day}°C</p>
-                            <p>${ele.weather[0].description}</p>
                         </div>
                         <button class="accordion">More Info</button>
                         <div class="panel">
