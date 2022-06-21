@@ -303,9 +303,9 @@ submit.addEventListener('click', function letsrock() {
     console.log(city.value);
     let coordinatesSel = `q=${city.value}`;
     console.log(coordinates);
-    url = `http://api.openweathermap.org/data/2.5/onecall?${coordinates}&appid=${key}&units=${units}&lang=${langSelec}`;
+    url = `https://api.openweathermap.org/data/2.5/onecall?${coordinates}&appid=${key}&units=${units}&lang=${langSelec}`;
     console.log(url);
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?${coordinatesSel}&limit=5&appid=${key}`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?${coordinatesSel}&limit=5&appid=${key}`)
         .then(resp => resp.json())
         .then(json => {
             console.log(json);
@@ -317,7 +317,7 @@ submit.addEventListener('click', function letsrock() {
                 return;
             } else {
                 let coordinatesS = `lat=${latSelec}&lon=${lonSelec}`;
-                let url2 = `http://api.openweathermap.org/data/2.5/onecall?${coordinatesS}&appid=${key}&units=${units}&lang=${langSelec}`;
+                let url2 = `https://api.openweathermap.org/data/2.5/onecall?${coordinatesS}&appid=${key}&units=${units}&lang=${langSelec}`;
                 console.log(url2);
                 fetch(url2)
                     .then(response => response.json())
@@ -399,7 +399,7 @@ submit.addEventListener('click', function letsrock() {
                     <h3 class="weekDay">${weekDays[weekDay.getDay()]}</h3>
                     <p class="dayTemp">${Math.round(json.current.temp)}°C</p>
                     <div class="weatherSymbol">
-                        <img src="http://openweathermap.org/img/wn/${json.current.weather[0].icon}@4x.png" alt="${json.current.weather[0].description}">
+                        <img src="https://openweathermap.org/img/wn/${json.current.weather[0].icon}@4x.png" alt="${json.current.weather[0].description}">
                     </div>
                     <p class='symboltext'>${json.current.weather[0].description}</p>
                     <p class="minTemp">Min. Temp. ${Math.round(json.daily[0].temp.min)}°C</p>
@@ -428,7 +428,7 @@ submit.addEventListener('click', function letsrock() {
 
                             outputHour.innerHTML +=
                                 `<div class="weatherSymbol">
-                                <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
+                                <img src="https://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
                             </div>
                             <div class="jetzt">
                                 <p class="icon">${ele.weather[0].description}</p>
@@ -521,7 +521,7 @@ submit.addEventListener('click', function letsrock() {
                             <h3 class="weekDay">${weekDays[wDay.getDay()]}</h3>
                             <p>${dateD}</p>
                             <div class="weatherSymbol">
-                                <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
+                                <img src="https://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
                             </div>
                             <p class='symboltext'>${ele.weather[0].description}</p>
                             <p class="dayTemp">${ele.temp.day}°C</p>

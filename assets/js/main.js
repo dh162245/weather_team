@@ -41,7 +41,7 @@ function currentLocation() {
         console.log(lon);
         console.log(coordinates);
         //define URL for fetch
-        url = `http://api.openweathermap.org/data/2.5/onecall?${coordinates}&appid=${key}&units=${units}&lang=${lang}`;
+        url = `https://api.openweathermap.org/data/2.5/onecall?${coordinates}&appid=${key}&units=${units}&lang=${lang}`;
         console.log(url);
         //hier ausgabe onload
         //Asugabe
@@ -59,7 +59,7 @@ function currentLocation() {
                     let hour = new Date(ele.dt * 1000);
                     hour = hour.getHours();
                     weatheroutput.innerHTML += ` 
-        <img src="http://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
+        <img src="https://openweathermap.org/img/wn/${ele.weather[0].icon}@4x.png" alt="${ele.weather[0].description}">
         </div>
         <div class="jetzt">
             <p class="time">${hour}:00</p>
